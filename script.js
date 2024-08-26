@@ -55,7 +55,7 @@ function displayBooksInLibrary () {
         const tableDataElement = document.createElement("td");
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete";
-        deleteButton.classList = "deleteButton";
+        deleteButton.classList.add("deleteButton", i);
         tableDataElement.appendChild(deleteButton);
         tableDataElement.style = "border : 0; background-color: white;"
         tableRowElement.appendChild(tableDataElement);
@@ -71,11 +71,26 @@ function addFunctionalityToggleAndDelete () {
         myLibrary[Number(button.className[(button.className).length - 1])].changeReadStatus();
         const changeColumnReadStatus = document.querySelector('.readStatus-'+button.className[(button.className).length - 1]);
         changeColumnReadStatus.textContent = myLibrary[Number(button.className[(button.className).length - 1])]['read'];
-    }
+                }
+            )
+        }
     )
-})
+    // Adding functionality to the Delete element
+    const deleteButton = document.querySelectorAll(".deleteButton");
+    deleteButton.forEach((button) => {
+        button.addEventListener("click", () => {
+            myLibrary.splice(Number(button.className[(button.className).length - 1]), 1);
+            const tableBodyElement = document.querySelector("tbody");
+            while (tableBodyElement.lastElementChild) {
+                tableBodyElement.lastElementChild.remove();
+            }
+            displayBooksInLibrary();
+            addFunctionalityToggleAndDelete();
+            }
+        )
+    })
 }
 
-
+// Initialization
 displayBooksInLibrary();
 addFunctionalityToggleAndDelete();
