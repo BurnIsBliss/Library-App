@@ -91,6 +91,18 @@ function addFunctionalityToggleAndDelete () {
     })
 }
 
+function openNewBookDialog () {
+    const newBookButton = document.querySelector(".addBook");
+    newBookButton.addEventListener("click", () => {document.querySelector("dialog").showModal();})
+
+    const closeButton = document.querySelector(".closeButton");
+    closeButton.addEventListener("click", () => {document.querySelector("dialog").close();})
+
+    const submitButton = document.querySelector(".submitButton");
+    submitButton.addEventListener("click", (event) => {event.preventDefault();})
+}
+
 // Initialization
 displayBooksInLibrary();
 addFunctionalityToggleAndDelete();
+openNewBookDialog();

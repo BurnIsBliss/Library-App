@@ -54,3 +54,16 @@ button:hover {
     /* background-color: red; */
     border: 2px solid rgb(10, 168, 242);
 }
+
+dialog {
+    height: 300px;
+    width: 400px;
+    font-size: 18px;
+    text-align: center;
+}
+
+input {
+    border: 2px solid black;
+    border-radius: 4px;
+    height: 14px;
+}
