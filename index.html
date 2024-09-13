@@ -8,6 +8,34 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    
+    <dialog class="addBookModal">
+        <form method="dialog">
+            <div class="bookName">
+                <label for="name_of_book">Book Title:</label>
+                <input type="text" id="name_of_book" name="name_of_book" placeholder="The Hobbit" required>
+            </div>
+            <div class="authorName">
+                <label for="name_of_author">Author:</label>
+                <input type="text" id="name_of_author" name="name_of_author" placeholder="J R R Tolkien" required>
+            </div>
+            <div class="pages">
+                <label for="no_of_pages">No. of pages:</label>
+                <input type="number" id="no_of_pages" name="no_of_pages" placeholder="341" required>
+            </div>
+            <div class="readStatus">
+                <input type="radio" id="read" name="readStatus" value="read">
+                <label for="read">Read</label>
+                <input type="radio" id="Not_read" name="readStatus" value="Not read" checked>
+                <label for="Not_read">Not read</label>
+            </div>
+            <div class="buttonContainer">
+                <button autofocus type="reset" class="closeButton">Close</button>
+                <button class="submitButton">Submit</button>
+            </div>
+        </form>
+    </dialog>
+
     <h1>A Library App</h1>
     <table>
         <caption>
@@ -25,32 +53,7 @@
        </thead>
        <tbody></tbody>
     </table>
+
     <button class="addBook 0">NEW BOOK</button>
-    <dialog>
-        <form action="gunslinger.txt" method="post">
-            <div class="bookName">
-                <label for="name_of_book">Book Title: </label>
-                <input type="text" id="name_of_book" name="name_of_book" placeholder="The Hobbit" required>
-            </div>
-            <div class="authorName">
-                <label for="name_of_author">Author: </label>
-                <input type="text" id="name_of_author" name="name_of_author" placeholder="J R R Tolkien" required>
-            </div>
-            <div class="pages">
-                <label for="no_of_pages">No. of pages: </label>
-                <input type="number" id="no_of_pages" name="no_of_pages" placeholder="341" required>
-            </div>
-            <div class="readStatus">
-                <input type="radio" id="read" name="readStatus" value="read">
-                <label for="read">Read</label>
-                <input type="radio" id="Not_read" name="readStatus" value="Not read" checked>
-                <label for="Not_read">Not read</label>
-            </div>
-            <div class="buttonContainer">
-                <button autofocus type="reset" class="closeButton">Close</button>
-                <button class="submitButton">Submit</button>
-            </div>
-        </form>
-    </dialog>
 </body>
 </html>

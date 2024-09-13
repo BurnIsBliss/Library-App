@@ -1,20 +1,41 @@
 // Book constructor
-function Book (title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = function () {
+// function Book (title, author, pages, read) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.read = read;
+//     this.info = function () {
+//         return (title+' by '+author+', '+pages+', '+read);
+//     }
+// }
+
+class Book {
+    constructor (title, author, pages, read) {
+        this.title = title;
+        this.author = author,
+        this.pages = pages;
+        this.read = read;
+    }
+
+    info = function () {
         return (title+' by '+author+', '+pages+', '+read);
     }
+
+    changeReadStatus = function () {
+        if ((this.read).toLowerCase()=='read')
+            this.read = 'Not read';
+        else
+            this.read = 'Read';
+    }
+
 }
 
-Book.prototype.changeReadStatus = function () {
-    if ((this.read).toLowerCase()=='read')
-        this.read = 'Not read';
-    else
-        this.read = 'Read';
-}
+// Book.prototype.changeReadStatus = function () {
+//     if ((this.read).toLowerCase()=='read')
+//         this.read = 'Not read';
+//     else
+//         this.read = 'Read';
+// }
 
 const myLibrary = [new Book ('This is book #1', 'ABC auth', 234, 'Not read'), new Book ('#2', 'XYZ', 927, 'Read'), new Book ('watta!', 'ORS', '127', 'Not read')]
 
@@ -92,14 +113,19 @@ function addFunctionalityToggleAndDelete () {
 }
 
 function openNewBookDialog () {
+    const dialogElement = document.querySelector(".addBookModal");
     const newBookButton = document.querySelector(".addBook");
-    newBookButton.addEventListener("click", () => {document.querySelector("dialog").showModal();})
+    newBookButton.addEventListener("click", () => {dialogElement.showModal();})
 
     const closeButton = document.querySelector(".closeButton");
-    closeButton.addEventListener("click", () => {document.querySelector("dialog").close();})
+    closeButton.addEventListener("click", () => {dialogElement.close();})
 
     const submitButton = document.querySelector(".submitButton");
-    submitButton.addEventListener("click", (event) => {event.preventDefault();})
+    submitButton.addEventListener("click", (event) => {
+        
+        // event.preventDefault();
+        // dialogElement.close();
+    })
 }
 
 // Initialization
