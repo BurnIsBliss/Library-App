@@ -1,14 +1,3 @@
-// Book constructor
-// function Book (title, author, pages, read) {
-//     this.title = title;
-//     this.author = author;
-//     this.pages = pages;
-//     this.read = read;
-//     this.info = function () {
-//         return (title+' by '+author+', '+pages+', '+read);
-//     }
-// }
-
 class Book {
     constructor (title, author, pages, read) {
         this.title = title;
@@ -30,25 +19,19 @@ class Book {
 
 }
 
-// Book.prototype.changeReadStatus = function () {
-//     if ((this.read).toLowerCase()=='read')
-//         this.read = 'Not read';
-//     else
-//         this.read = 'Read';
-// }
+let myLibrary = [new Book ('This is book #1', 'ABC auth', 234, 'Not read'), new Book ('#2', 'XYZ', 927, 'Read'), new Book ('watta!', 'ORS', '127', 'Not read')];
 
-const myLibrary = [new Book ('This is book #1', 'ABC auth', 234, 'Not read'), new Book ('#2', 'XYZ', 927, 'Read'), new Book ('watta!', 'ORS', '127', 'Not read')]
-
-// const myLibrary = [new Book ('This is book #1', 'ABC auth', 234, 'Not read'), new Book ('#2', 'XYZ', 927, 'Read'), new Book ('watta!', 'ORS', '127', 'Not read')]
-
-function addBookToLibrary () {
-    // Do it later
+function addBookToLibrary (newBook) {
+    myLibrary.push(newBook);
 }
 
 
 // function to display the books in the library as a table along with the delete and toggle buttons
 function displayBooksInLibrary () {
     const tbodyElement = document.querySelector("tbody");
+    while (tbodyElement.firstElementChild) {
+        tbodyElement.removeChild(tbodyElement.lastChild);
+    }
     for (let i in myLibrary) {
         const tableRowElement = document.createElement("tr");
         tableRowElement.classList = 'row-' + i;
@@ -122,9 +105,14 @@ function openNewBookDialog () {
 
     const submitButton = document.querySelector(".submitButton");
     submitButton.addEventListener("click", (event) => {
-        
+        let readValue;
+        if (document.querySelector('#read').checked)  readValue = document.querySelector('#read').value;
+        else readValue = document.querySelector('#Not_read').value;
+        addBookToLibrary(new Book(document.querySelector('#name_of_book').value, document.querySelector('#name_of_author').value, document.querySelector('#no_of_pages').value,readValue));
+        dialogElement.close();
+        displayBooksInLibrary();
+        addFunctionalityToggleAndDelete();
         // event.preventDefault();
-        // dialogElement.close();
     })
 }
 
