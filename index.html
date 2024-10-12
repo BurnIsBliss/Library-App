@@ -10,7 +10,7 @@
 <body>
     
     <dialog class="addBookModal">
-        <form method="dialog">
+        <form method="dialog" novalidate>
             <div class="bookName">
                 <label for="name_of_book">Book Title:</label>
                 <input type="text" id="name_of_book" name="name_of_book" placeholder="The Hobbit" required>
@@ -31,7 +31,7 @@
             </div>
             <div class="buttonContainer">
                 <button autofocus type="reset" class="closeButton">Close</button>
-                <button class="submitButton" type="reset">Submit</button>
+                <button class="submitButton" type="submit">Submit</button>
             </div>
         </form>
     </dialog>

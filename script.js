@@ -105,16 +105,31 @@ function openNewBookDialog () {
 
     const submitButton = document.querySelector(".submitButton");
     submitButton.addEventListener("click", (event) => {
-        let readValue;
-        if (document.querySelector('#read').checked)  readValue = document.querySelector('#read').value;
-        else readValue = document.querySelector('#Not_read').value;
-        addBookToLibrary(new Book(document.querySelector('#name_of_book').value, document.querySelector('#name_of_author').value, document.querySelector('#no_of_pages').value,readValue));
-        dialogElement.close();
-        displayBooksInLibrary();
-        addFunctionalityToggleAndDelete();
-        // event.preventDefault();
+        if (!formValidationForModal()) {
+            let readValue;
+            if (document.querySelector('#read').checked)  readValue = document.querySelector('#read').value;
+            else readValue = document.querySelector('#Not_read').value;
+            addBookToLibrary(new Book(document.querySelector('#name_of_book').value, document.querySelector('#name_of_author').value, document.querySelector('#no_of_pages').value,readValue));
+            dialogElement.close();
+            document.querySelector('.addBookModal > form').reset();
+            displayBooksInLibrary();
+            addFunctionalityToggleAndDelete();
+        }
+        event.preventDefault();
     })
 }
+
+function formValidationForModal () {
+    let k = 0;
+    const textInputFields = document.querySelectorAll('form > div > input:not(input[type="radio"])');
+    textInputFields.forEach((element) => {
+        if (!element.validity.valid) k = 1;
+    })
+    if (k) alert(`These fields are mandatory`);
+
+    return (k);
+}
+
 
 // Initialization
 displayBooksInLibrary();
